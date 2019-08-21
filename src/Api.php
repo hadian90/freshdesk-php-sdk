@@ -26,6 +26,7 @@ use Freshdesk\Resources\Forum;
 use Freshdesk\Resources\Group;
 use Freshdesk\Resources\Product;
 use Freshdesk\Resources\SLAPolicy;
+use Freshdesk\Resources\Solution;
 use Freshdesk\Resources\Ticket;
 use Freshdesk\Resources\TimeEntry;
 use Freshdesk\Resources\Topic;
@@ -166,6 +167,14 @@ class Api
     public $slaPolicies;
 
     /**
+     * Solution resources
+     *
+     * @api
+     * @var Solution
+     */
+    public $solution;
+
+    /**
      * @internal
      * @var Client
      */
@@ -300,6 +309,9 @@ class Api
         $this->forums     = new Forum($this);
         $this->topics     = new Topic($this);
         $this->comments   = new Comment($this);
+
+        //Solution
+        $this->solution = new Solution($this);
 
         //Admin
         $this->products      = new Product($this);
