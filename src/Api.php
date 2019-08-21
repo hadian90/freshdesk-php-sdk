@@ -16,11 +16,11 @@ use Freshdesk\Exceptions\RateLimitExceededException;
 use Freshdesk\Exceptions\UnsupportedContentTypeException;
 use Freshdesk\Resources\Agent;
 use Freshdesk\Resources\BusinessHour;
-use Freshdesk\Resources\Category;
 use Freshdesk\Resources\Comment;
 use Freshdesk\Resources\Company;
 use Freshdesk\Resources\Contact;
 use Freshdesk\Resources\Conversation;
+use Freshdesk\Resources\Discussion;
 use Freshdesk\Resources\EmailConfig;
 use Freshdesk\Resources\Forum;
 use Freshdesk\Resources\Group;
@@ -100,12 +100,12 @@ class Api
     public $conversations;
 
     /**
-     * Category resources
+     * Discussion resources
      *
      * @api
-     * @var Category
+     * @var Discussion
      */
-    public $categories;
+    public $discussion;
 
     /**
      * Forum resources
@@ -192,13 +192,12 @@ class Api
         $this->baseUrl = sprintf('https://%s.freshdesk.com/api/v2', $domain);
 
         $this->client = new Client([
-                'auth' => [$apiKey, 'X']
-            ]
+            'auth' => [$apiKey, 'X'],
+        ]
         );
 
         $this->setupResources();
     }
-
 
     /**
      * Internal method for handling requests
@@ -241,7 +240,8 @@ class Api
      * @throws AuthenticationException
      * @throws ConflictingStateException
      */
-    private function performRequest($method, $url, $options) {
+    private function performRequest($method, $url, $options)
+    {
 
         try {
             switch ($method) {
@@ -260,7 +260,6 @@ class Api
             throw ApiException::create($e);
         }
     }
-
 
     /**
      * @param $apiKey
@@ -286,26 +285,26 @@ class Api
     private function setupResources()
     {
         //People
-        $this->agents = new Agent($this);
+        $this->agents    = new Agent($this);
         $this->companies = new Company($this);
-        $this->contacts = new Contact($this);
-        $this->groups = new Group($this);
+        $this->contacts  = new Contact($this);
+        $this->groups    = new Group($this);
 
         //Tickets
-        $this->tickets = new Ticket($this);
-        $this->timeEntries = new TimeEntry($this);
+        $this->tickets       = new Ticket($this);
+        $this->timeEntries   = new TimeEntry($this);
         $this->conversations = new Conversation($this);
 
         //Discussions
-        $this->categories = new Category($this);
-        $this->forums = new Forum($this);
-        $this->topics = new Topic($this);
-        $this->comments = new Comment($this);
+        $this->discussion = new Discussion($this);
+        $this->forums     = new Forum($this);
+        $this->topics     = new Topic($this);
+        $this->comments   = new Comment($this);
 
         //Admin
-        $this->products = new Product($this);
-        $this->emailConfigs = new EmailConfig($this);
-        $this->slaPolicies = new SLAPolicy($this);
+        $this->products      = new Product($this);
+        $this->emailConfigs  = new EmailConfig($this);
+        $this->slaPolicies   = new SLAPolicy($this);
         $this->businessHours = new BusinessHour($this);
     }
 }
