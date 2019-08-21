@@ -22,6 +22,7 @@ use Freshdesk\Resources\Contact;
 use Freshdesk\Resources\Conversation;
 use Freshdesk\Resources\Discussion;
 use Freshdesk\Resources\EmailConfig;
+use Freshdesk\Resources\Folder;
 use Freshdesk\Resources\Forum;
 use Freshdesk\Resources\Group;
 use Freshdesk\Resources\Product;
@@ -175,6 +176,14 @@ class Api
     public $solution;
 
     /**
+     * Folder resources
+     *
+     * @api
+     * @var Folder
+     */
+    public $folder;
+
+    /**
      * @internal
      * @var Client
      */
@@ -312,6 +321,7 @@ class Api
 
         //Solution
         $this->solution = new Solution($this);
+        $this->folder   = new Folder($this);
 
         //Admin
         $this->products      = new Product($this);
