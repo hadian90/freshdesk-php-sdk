@@ -27,6 +27,6 @@ class Solution extends AbstractResource
      * @var string
      *
      */
-    protected $endpoint = '/solution/categories';
+    protected $endpoint = '/solutions/categories';
 
 }
