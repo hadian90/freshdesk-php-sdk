@@ -7,7 +7,7 @@
 
 This is a PHP 5.5+ SDK for the [Freshdesk](https://www.freshdesk.com) API v2.
 
-Maintaned by hadian90
+Maintaned by hadian90 original repo from mpclarkson/freshdesk-php-sdk
 
 If you have questions, please contact me or open an issue on GitHub.
 
@@ -156,7 +156,7 @@ This is a work in progress and PRs are welcome. Please read the
 Nearly all api calls are available except for the `Solutions` and `Surveys`,
 which Freshdesk has not yet implemented.
 
--   [ ] Solutions
+-   [x] Solutions
 -   [ ] Surveys
 -   [ ] Uploading files is not yet supported
 -   [ ] More tests. You can never have enough!
