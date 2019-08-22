@@ -47,6 +47,6 @@ trait CategoryTrait
     private function base()
     {
         $arr = explode('/', $this->endpoint);
-        return $arr[1];
+        return '/' . $arr[1];
     }
 }
