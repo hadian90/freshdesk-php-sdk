@@ -44,7 +44,7 @@ class Article extends AbstractResource
      */
     private function folderEndpoint($id = null)
     {
-        return $id === null ? $this->categoryEndpoint : $this->categoryEndpoint . '/' . $id;
+        return $id === null ? $this->folderEndpoint : $this->folderEndpoint . '/' . $id;
     }
 
     /**
