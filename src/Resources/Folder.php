@@ -2,7 +2,7 @@
 
 namespace Freshdesk\Resources;
 
-use Freshdesk\Resources\Traits\AllTrait;
+use Freshdesk\Resources\Traits\CategoryTrait;
 use Freshdesk\Resources\Traits\DeleteTrait;
 use Freshdesk\Resources\Traits\UpdateTrait;
 use Freshdesk\Resources\Traits\ViewTrait;
@@ -17,7 +17,7 @@ use Freshdesk\Resources\Traits\ViewTrait;
 class Folder extends AbstractResource
 {
 
-    use AllTrait, ViewTrait, UpdateTrait, DeleteTrait;
+    use CategoryTrait, ViewTrait, UpdateTrait, DeleteTrait;
 
     /**
      * The resource endpoint
@@ -37,7 +37,7 @@ class Folder extends AbstractResource
     protected $categoryEndpoint = '/solutions/categories';
 
     /**
-     * Creates the category endpoint (for creating forums)
+     * Creates the category endpoint (for creating folders)
      *
      * @param integer $id
      * @return string

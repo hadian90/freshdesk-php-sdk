@@ -321,7 +321,7 @@ class Api
 
         //Solution
         $this->solution = new Solution($this);
-        $this->folder   = new Folder($this);
+        $this->folders  = new Folder($this);
 
         //Admin
         $this->products      = new Product($this);
