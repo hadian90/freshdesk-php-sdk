@@ -41,6 +41,12 @@ trait CategoryTrait
      */
     public function forCategory($id, array $query = null)
     {
-        return $this->api()->request('GET', $this->categoryEndpoint($id) . $this->endpoint, null, $query);
+        return $this->api()->request('GET', $this->categoryEndpoint($id) . base(), null, $query);
+    }
+
+    private function base()
+    {
+        $arr = explode('/', $this->endpoint);
+        return $arr[1];
     }
 }
