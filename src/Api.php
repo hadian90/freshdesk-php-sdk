@@ -314,14 +314,14 @@ class Api
         $this->conversations = new Conversation($this);
 
         //Discussions
-        $this->discussion = new Discussion($this);
-        $this->forums     = new Forum($this);
-        $this->topics     = new Topic($this);
-        $this->comments   = new Comment($this);
+        $this->discussions = new Discussion($this);
+        $this->forums      = new Forum($this);
+        $this->topics      = new Topic($this);
+        $this->comments    = new Comment($this);
 
         //Solution
-        $this->solution = new Solution($this);
-        $this->folders  = new Folder($this);
+        $this->solutions = new Solution($this);
+        $this->folders   = new Folder($this);
 
         //Admin
         $this->products      = new Product($this);
