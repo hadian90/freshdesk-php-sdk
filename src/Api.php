@@ -15,6 +15,7 @@ use Freshdesk\Exceptions\ConflictingStateException;
 use Freshdesk\Exceptions\RateLimitExceededException;
 use Freshdesk\Exceptions\UnsupportedContentTypeException;
 use Freshdesk\Resources\Agent;
+use Freshdesk\Resources\Article;
 use Freshdesk\Resources\BusinessHour;
 use Freshdesk\Resources\Comment;
 use Freshdesk\Resources\Company;
@@ -107,7 +108,7 @@ class Api
      * @api
      * @var Discussion
      */
-    public $discussion;
+    public $discussions;
 
     /**
      * Forum resources
@@ -173,7 +174,7 @@ class Api
      * @api
      * @var Solution
      */
-    public $solution;
+    public $solutions;
 
     /**
      * Folder resources
@@ -181,7 +182,15 @@ class Api
      * @api
      * @var Folder
      */
-    public $folder;
+    public $folders;
+
+    /**
+     * Folder resources
+     *
+     * @api
+     * @var Article
+     */
+    public $articles;
 
     /**
      * @internal
@@ -322,6 +331,7 @@ class Api
         //Solution
         $this->solutions = new Solution($this);
         $this->folders   = new Folder($this);
+        $this->articles  = new Article($this);
 
         //Admin
         $this->products      = new Product($this);
