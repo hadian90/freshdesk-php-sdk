@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Matt
@@ -86,5 +87,12 @@ class Contact extends AbstractResource
         $end = $id . '/make_agent';
 
         return $this->api()->request('GET', $this->endpoint($end), null, $query);
+    }
+
+    public function hardDelete($id)
+    {
+        $end = $id . '/hard_delete';
+
+        return $this->api()->request('DELETE', $this->endpoint($end), null, null);
     }
 }
