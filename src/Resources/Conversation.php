@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Matt
@@ -71,6 +72,30 @@ class Conversation extends AbstractResource
     public function reply($id, array $data)
     {
         return $this->api()->request('POST', $this->ticketsEndpoint($id . '/reply'), $data);
+    }
+
+    /**
+     *
+     * Reply to a ticket with attachment
+     *
+     * @api
+     * @param int $id
+     * @param array $data
+     * @return array|null
+     * @throws \Freshdesk\Exceptions\AccessDeniedException
+     * @throws \Freshdesk\Exceptions\ApiException
+     * @throws \Freshdesk\Exceptions\AuthenticationException
+     * @throws \Freshdesk\Exceptions\ConflictingStateException
+     * @throws \Freshdesk\Exceptions\NotFoundException
+     * @throws \Freshdesk\Exceptions\RateLimitExceededException
+     * @throws \Freshdesk\Exceptions\UnsupportedContentTypeException
+     * @throws \Freshdesk\Exceptions\MethodNotAllowedException
+     * @throws \Freshdesk\Exceptions\UnsupportedAcceptHeaderException
+     * @throws \Freshdesk\Exceptions\ValidationException
+     */
+    public function replyWithAttachment($id, array $data)
+    {
+        return $this->api()->requestMultipart('POST', $this->ticketsEndpoint($id . '/reply'), $data);
     }
 
     /**

@@ -1,4 +1,5 @@
 <?php
+
 /**
  * Created by PhpStorm.
  * User: Matt
@@ -218,9 +219,10 @@ class Api
 
         $this->baseUrl = sprintf('https://%s.freshdesk.com/api/v2', $domain);
 
-        $this->client = new Client([
-            'auth' => [$apiKey, 'X'],
-        ]
+        $this->client = new Client(
+            [
+                'auth' => [$apiKey, 'X'],
+            ]
         );
 
         $this->setupResources();
@@ -243,6 +245,33 @@ class Api
     public function request($method, $endpoint, array $data = null, array $query = null)
     {
         $options = ['json' => $data];
+
+        if (isset($query)) {
+            $options['query'] = $query;
+        }
+
+        $url = $this->baseUrl . $endpoint;
+
+        return $this->performRequest($method, $url, $options);
+    }
+
+    /**
+     * Internal method for handling requests multipart
+     *
+     * @internal
+     * @param $method
+     * @param $endpoint
+     * @param array|null $data
+     * @param array|null $query
+     * @return mixed|null
+     * @throws ApiException
+     * @throws ConflictingStateException
+     * @throws RateLimitExceededException
+     * @throws UnsupportedContentTypeException
+     */
+    public function requestMultipart($method, $endpoint, array $data = null, array $query = null)
+    {
+        $options = ['multipart' => $data];
 
         if (isset($query)) {
             $options['query'] = $query;
