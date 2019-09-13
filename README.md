@@ -158,7 +158,7 @@ which Freshdesk has not yet implemented.
 
 -   [x] Solutions
 -   [ ] Surveys
--   [ ] Uploading files is not yet supported
+-   [x] Uploading files is not yet supported
 -   [ ] More tests. You can never have enough!
 -   [ ] Nicer documentation
 
