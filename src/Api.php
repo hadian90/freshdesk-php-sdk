@@ -204,6 +204,19 @@ class Api
      * @var string
      */
     private $baseUrl;
+    
+     /**
+     * @api
+     * @var string
+     */
+    public $headers;
+    
+    
+    /**
+     * @api
+     * @var string
+     */
+    public $result;
 
     /**
      * Constructs a new api instance
@@ -300,18 +313,11 @@ class Api
     {
 
         try {
-            switch ($method) {
-                case 'GET':
-                    return json_decode($this->client->get($url, $options)->getBody(), true);
-                case 'POST':
-                    return json_decode($this->client->post($url, $options)->getBody(), true);
-                case 'PUT':
-                    return json_decode($this->client->put($url, $options)->getBody(), true);
-                case 'DELETE':
-                    return json_decode($this->client->delete($url, $options)->getBody(), true);
-                default:
-                    return null;
-            }
+            $request = $this->client->request($method, $url, $options);
+
+            $this->headers = $request->getHeaders();
+            $this->results = json_decode($request->getBody(), true);
+            return $this;
         } catch (RequestException $e) {
             throw ApiException::create($e);
         }
