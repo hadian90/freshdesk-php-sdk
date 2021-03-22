@@ -204,14 +204,14 @@ class Api
      * @var string
      */
     private $baseUrl;
-    
+
      /**
      * @api
      * @var string
      */
     public $headers;
-    
-    
+
+
     /**
      * @api
      * @var string
@@ -224,19 +224,16 @@ class Api
      * @api
      * @param string $apiKey
      * @param string $domain
+     * @param array $options
      * @throws Exceptions\InvalidConfigurationException
      */
-    public function __construct($apiKey, $domain)
+    public function __construct($apiKey, $domain, $options = [])
     {
         $this->validateConstructorArgs($apiKey, $domain);
 
         $this->baseUrl = sprintf('https://%s.freshdesk.com/api/v2', $domain);
 
-        $this->client = new Client(
-            [
-                'auth' => [$apiKey, 'X'],
-            ]
-        );
+        $this->client = new Client(array_merge($options, ['auth' => [$apiKey, 'X']]));
 
         $this->setupResources();
     }
