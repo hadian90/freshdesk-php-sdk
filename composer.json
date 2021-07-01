@@ -1,8 +1,8 @@
 {
-    "name": "hadian90/freshdesk-php-sdk",
+    "name": "runcloudio/freshdesk-php-sdk",
     "description": "PHP SDK for the Freshdesk API (v2)",
     "type": "library",
-    "homepage": "https://github.com/hadian90/freshdesk-php-sdk",
+    "homepage": "https://github.com/RunCloudIO/freshdesk-php-sdk",
     "keywords": [
         "freshdesk",
         "customer service",
@@ -12,6 +12,11 @@
     ],
     "license": "MIT",
     "authors": [
+        {
+            "name": "Ahmad Fikrizaman",
+            "email": "fikri@runcloud.io",
+            "homepage": "https://runcloud.io"
+        },
         {
             "name": "Abdul Hadi",
             "email": "hadian90@gmail.com",
@@ -25,7 +30,7 @@
     ],
     "require": {
         "php": ">=5.5.0",
-        "guzzlehttp/guzzle": ">=4.0,<7.0"
+        "guzzlehttp/guzzle": "^7.0.1"
     },
     "require-dev": {
         "phpunit/phpunit": "4.8.*",
